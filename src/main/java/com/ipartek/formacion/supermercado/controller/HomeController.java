@@ -2,6 +2,9 @@ package com.ipartek.formacion.supermercado.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -21,20 +24,19 @@ import com.ipartek.formacion.supermercado.model.ProductoArrayListDAO;
 @WebServlet(
 		urlPatterns = { "/home" }, 
 		initParams = { 
-				@WebInitParam(name = "numeroProductos", value = "10", description = "Numeros de productos a mostrar en la página inicial")
+				@WebInitParam(name = "numeroProductos", value = "10", description = "Numero de productos a mostrar en la pagina inicial")
 		})
 public class HomeController extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
 	private static ProductoArrayListDAO dao;
-	private ArrayList<Producto> productos;	
-	private Producto productoInicio;
-
+       
+   
 	/**
 	 * @see Servlet#init(ServletConfig)
 	 */
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
-		//Se ejecuta solo con la 1º petición, el resto de peticiones iran a "service"
 		dao = ProductoArrayListDAO.getInstance();
 	}
 
@@ -42,8 +44,6 @@ public class HomeController extends HttpServlet {
 	 * @see Servlet#destroy()
 	 */
 	public void destroy() {
-		super.destroy();
-		//se ejecuta al parar el servidor
 		dao = null;
 	}
 
@@ -60,46 +60,26 @@ public class HomeController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doProcess(request, response);
 	}
-	
-	
+
 	private void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try {
-			//String numeroProductos = getSer("numeroProductos");
-			String numeroProductos = "10";
-			request.setAttribute("numeroProductos", numeroProductos);
-			
-			//Dao
-			//parametros
-			String id = request.getParameter("id");
-			String op = request.getParameter("op");
-			
-			//eliminar ?			
-			if ( op != null ) {
-				dao.delete(id);
-			}
-			
-			//listado videos			
-			productos = (ArrayList<Producto>) dao.getAll();
-			
-			
-			//video de inicio
-			productoInicio = new Producto();
-			if ( id != null ) {
-				productoInicio = dao.getById(id);
 		
-			}else if ( !productos.isEmpty()) {
-				productoInicio = productos.get(0);
-			}
+		try {
 			
+			ServletConfig sconfig = this.getServletConfig();			
+			String numeroProductos = sconfig.getInitParameter("numeroProductos");			
+			request.setAttribute("numeroProductos", numeroProductos);	
 			
+			List<Producto> productos = dao.getAll();
+			request.setAttribute("productos", productos);
 			
-			
-		}catch (Exception e){
+		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			
+					
 			request.getRequestDispatcher("home.jsp").forward(request, response);
 		}
+		
 		
 	}
 

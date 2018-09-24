@@ -9,19 +9,19 @@
                     <ul class="navbar-nav mr-auto menu">
 
                         <li class="nav-item">
-                            <a class="nav-link" href="home">Principal <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="home">Inicio <span class="sr-only">(current)</span></a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="login.html">Login</a>
+                            <a class="nav-link" href="login.jsp">Login</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="alta-producto.html">Nuevo producto</a>
+                            <a class="nav-link" href="privado/alta-producto.jsp">Nuevo producto</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="listado.html">Listado</a>
+                            <a class="nav-link" href="listado.jsp">Listado</a>
                         </li>
 
                     </ul>

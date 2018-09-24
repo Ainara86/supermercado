@@ -13,9 +13,9 @@ public class ProductoArrayListDAO implements CrudAble<Producto> {
 	private ProductoArrayListDAO() {
 		productos = new ArrayList<Producto>();
 		try {
-			productos.add(new Producto(1, "Beefeater", 13.35f, 20, null,"ginebra inglesa botella 70cl","18,50€ / Litro"));
-			productos.add(new Producto(2, "Absolut Vodka",15.75f, 0, null, "Absolut Vodka es la marca líder de vodka Premium, con el auténtico sabor del vodka original", "19.95€ / Litro"));
-			productos.add(new Producto(3, "Don Simón", 1.75f, 0, null, "Vino tinto 12 % vol alcohol. Clarificado y estabilizado. Franco y limpio. Microbiológicamente estable.", "2.15€ / Litro"));
+			productos.add(new Producto(1, "Beefeater", 13.35f, 20, "images/default_product.png","ginebra inglesa botella 70cl","18,50€ / Litro"));
+			productos.add(new Producto(2, "Absolut Vodka",15.75f, 0 ,"images/default_product.png", "Absolut Vodka es la marca líder de vodka Premium.", "19.95€ / Litro"));
+			productos.add(new Producto(3, "Don Simón", 1.75f, 0 ,"images/default_product.png", "Vino tinto 12 % vol alcohol.", "2.15€ / Litro"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

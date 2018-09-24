@@ -72,6 +72,13 @@ public class Producto {
 	public void setPrecioUnidad(String precioUnidad) {
 		this.precioUnidad = precioUnidad;
 	}
+	
+	public float getCalcularDescuento() {
+		return Math.round((this.precio-(this.precio*this.descuento/100)));
+		
+	}
+	
+	
 	@Override
 	public String toString() {
 		return "Producto [id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", descuento=" + descuento

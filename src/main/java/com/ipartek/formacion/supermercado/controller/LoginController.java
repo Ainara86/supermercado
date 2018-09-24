@@ -22,57 +22,42 @@ import com.ipartek.formacion.supermercado.model.Alert;
 @WebServlet("/login")
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+   
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doProcess(request, response);
+		doPost(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doProcess(request, response);
-	}
 
-	private void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		Alert alert = new Alert();
 		HttpSession session = request.getSession();
 		
 		try {
-			//recoger parametros
-			String usuarioNombre = request.getParameter("usuario");
+			
+			String nombre = request.getParameter("correo");
 			String pass = request.getParameter("pass");
-				
-			//comprobar usuario TODO contra BBDD
-			if ( "admin".equals(pass) && "admin".equals(usuarioNombre)  )  {
-				
-				alert.setTexto("Bienvenido");
-				alert.setTipo(Alert.PRIMARY);
-				
-				//guardar Usuario en session
-				Usuario u = new Usuario(usuarioNombre, pass);
-				
-				session.setAttribute("usuario", u);
-				session.setMaxInactiveInterval(60); // 1min
-				
-				
-	
-			}else{
-				
-				alert.setTexto("Credenciales incorrectas" );
+			
+			Usuario u = (Usuario) session.getAttribute("usuario");
+			if("admin".equals(nombre) && "admin1234".equals(pass)) {
+
+				if (u == null) {
+					u = new Usuario();
+					u.setNombre(nombre);
+					u.setPass(pass);
+					session.setAttribute("usuario", u);
+					response.sendRedirect(request.getContextPath() + "/privado/listado.jsp");
+				}
+			}else {
+				response.sendRedirect(request.getContextPath() + "/login.jsp?msg=Usuario%20o%20Pass%20Incorrectos");
 			}
 			
-			
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
-			session.setAttribute("alert", alert);
-			//request.getRequestDispatcher("home.jsp").forward(request, response);
-			response.sendRedirect(request.getContextPath() + "login.jsp" ); 
 		}
 		
 	}

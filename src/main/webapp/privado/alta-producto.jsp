@@ -1,6 +1,10 @@
-<%@include file="includes/header.jsp" %>
-<%@include file="includes/navbar.jsp" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
+<%@ include file="../includes/header.jsp" %>
+
+    <div class="contenedor">
+
+		<%@ include file="../includes/navbar.jsp" %>
             <main role="main" class="container">
 
                 <h1><i class="fas fa-archive"></i> Alta de producto</h1>
@@ -56,5 +60,5 @@
                 </form>
                 
             </main>
-
-<%@include file="includes/footer.jsp" %>
+        </div> <!-- ./contenedor -->
+<%@ include file="../includes/footer.jsp" %>

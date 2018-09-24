@@ -1,5 +1,10 @@
-<%@include file="includes/header.jsp" %>
-<%@include file="includes/navbar.jsp" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<%@ include file="../includes/header.jsp" %>
+
+    <div class="contenedor">
+
+		<%@ include file="../includes/navbar.jsp" %>
 
         <main class="container" role="main">
 	
@@ -31,12 +36,12 @@
                     </tr>
                         
                     <tr>
-                        <td>Don Simón</td>
+                        <td>Don SimÃ³n</td>
                         <td>1.75&euro;</td>
                         <td>176</td>
                         <td>5&#37;</td>
                         <td>2.15&euro; / L</td>
-                        <td>Vino tinto 12 % vol alcohol. Clarificado y estabilizado. Franco y limpio. Microbiológicamente estable.</td>
+                        <td>Vino tinto 12 % vol alcohol. Clarificado y estabilizado. Franco y limpio. MicrobiolÃ³gicamente estable.</td>
                         <td><img src="https://s2.dia.es/medias/h83/h57/9158836420638.jpg" alt="imagen-vino-don-simon" /></td>
                     </tr>
                         
@@ -46,7 +51,7 @@
                         <td>17</td>
                         <td>0&#37;</td>
                         <td>19.95&euro; / L</td>
-                        <td>Absolut Vodka es la marca líder de vodka Premium, con el auténtico sabor del vodka original o tus sabores favoritos elaborados con ingredientes naturales.</td>
+                        <td>Absolut Vodka es la marca lÃ­der de vodka Premium, con el autÃ©ntico sabor del vodka original o tus sabores favoritos elaborados con ingredientes naturales.</td>
                         <td><img src="https://www.oaksncorks.com/wp-content/uploads/2017/04/absolut-vodka-100x100.png" alt="imagen-absolute-vodka" /></td>
                     </tr>
                         
@@ -56,7 +61,7 @@
                         <td>34</td>
                         <td>33&#37;</td>
                         <td>27.50&euro; / L</td>
-                        <td>Johnnie Walker​ es una marca de whisky escocés producida por Diageo en Kilmarnock, Escocia.</td>
+                        <td>Johnnie Walkerâ es una marca de whisky escocÃ©s producida por Diageo en Kilmarnock, Escocia.</td>
                         <td><img src="https://cdn.shopify.com/s/files/1/0213/9218/products/johnnie-walker-blue-label.jpg?v=1499156537" alt="imagen-whisky-johnny-walker" /></td>
                     </tr>
                         
@@ -76,7 +81,7 @@
                         <td>92</td>
                         <td>10&#37;</td>
                         <td>5.35&euro; / L</td>
-                        <td>Como marca líder de cerveza de trigo, la Cervecería Paulaner asume responsabilidad y aboga por un consumo responsable de bebidas alcohólicas.</td>
+                        <td>Como marca líder de cerveza de trigo, la Cervecería Paulaner asume responsabilidad y aboga por un consumo responsable de bebidas alcohÃ³licas.</td>
                         <td><img src="https://souriredessaveurs.com/2978-large_default/cerveza-hefe-weissbier-paulaner-naturtrueb-aleman-blanco-55-50-cl.jpg" alt="imagen-cerveza-paulaner" /></td>
                     </tr>
                         
@@ -109,7 +114,7 @@
 
     <!-- Scripts para plugin datatable -->
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 	
     <script>

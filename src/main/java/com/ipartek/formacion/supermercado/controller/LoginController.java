@@ -1,9 +1,6 @@
 package com.ipartek.formacion.supermercado.controller;
 
 import java.io.IOException;
-import java.text.MessageFormat;
-import java.util.Locale;
-import java.util.ResourceBundle;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,9 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
 import com.ipartek.formacion.supermercado.model.Usuario;
-import com.ipartek.formacion.supermercado.model.Alert;
 
 /**
  * Servlet implementation class LoginController
@@ -27,7 +22,7 @@ public class LoginController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
+		doProcess(request, response);
 	}
 
 	/**
@@ -35,6 +30,12 @@ public class LoginController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		doProcess(request, response);
+		
+	}
+	
+	
+	private void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
 		HttpSession session = request.getSession();
 		
 		try {
@@ -43,13 +44,14 @@ public class LoginController extends HttpServlet {
 			String pass = request.getParameter("pass");
 			
 			Usuario u = (Usuario) session.getAttribute("usuario");
-			if("admin".equals(nombre) && "admin1234".equals(pass)) {
+			if("admin@gmail.com".equals(nombre) && "admin1234".equals(pass)) {
 
 				if (u == null) {
 					u = new Usuario();
 					u.setNombre(nombre);
 					u.setPass(pass);
 					session.setAttribute("usuario", u);
+					session.setMaxInactiveInterval(60*1); // 5min
 					response.sendRedirect(request.getContextPath() + "/privado/listado.jsp");
 				}
 			}else {
@@ -59,7 +61,6 @@ public class LoginController extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 	}
 
 }

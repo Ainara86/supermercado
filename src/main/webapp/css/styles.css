@@ -9,6 +9,17 @@ img{
     max-width: 100%;
 }
 
+.usuario{
+	color: white;
+	padding-left: 15rem;
+}
+
+.inicial{
+	color: white;
+	padding-left: 60rem;
+}
+
+
 /* Estilos para el logo del menu de cabecera */
 
 nav img{
@@ -32,6 +43,10 @@ nav img{
 }
 
 /* Estilos para el contenido principal de la página */
+
+main.container{
+	min-height:68vh;
+}
 
 .contenido{
     margin:1em auto;

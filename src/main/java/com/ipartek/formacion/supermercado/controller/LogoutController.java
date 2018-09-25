@@ -34,14 +34,14 @@ public class LogoutController extends HttpServlet {
 		try {
 			HttpSession session = request.getSession();
 			if (session != null) {
-				session.removeAttribute("usuario");
-				//session.invalidate();
-				//session = null;
+				//session.removeAttribute("usuario");
+				session.invalidate();
+				session = null;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			response.sendRedirect(request.getContextPath() + "/inicio");
+			response.sendRedirect(request.getContextPath() + "/home");
 		}
 
 }

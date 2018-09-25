@@ -28,7 +28,7 @@
                         
                         <div class="form-group">
                             <label for="correo" class="required">Email</label>
-                            <input name="correo" type="text" class="form-control" id="correo" autofocus required placeholder="Ej: paco@gmail.com" />
+                            <input name="correo" type="email" class="form-control" id="correo" autofocus required placeholder="Ej: paco@gmail.com" />
                         </div>
                                     
                         <div class="form-group">

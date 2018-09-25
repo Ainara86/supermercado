@@ -36,6 +36,7 @@ public class LoginController extends HttpServlet {
 	
 	
 	private void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
+		
 		HttpSession session = request.getSession();
 		
 		try {
@@ -51,7 +52,7 @@ public class LoginController extends HttpServlet {
 					u.setNombre(nombre);
 					u.setPass(pass);
 					session.setAttribute("usuario", u);
-					session.setMaxInactiveInterval(60*1); // 5min
+					session.setMaxInactiveInterval(60); // 1min
 					response.sendRedirect(request.getContextPath() + "/privado/listado.jsp");
 				}
 			}else {

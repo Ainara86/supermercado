@@ -14,7 +14,7 @@
 						
 	                    <p><span class="tachado">${p.precio}&euro;</span><span>${p.calcularDescuento}&euro;</span></p>
 	                    <p class="precio-litro">(${p.precioUnidad})</p>
-	                    <p>${p.nombre}${p.descripcion};</p>
+	                    <p>${p.nombre} ${p.descripcion};</p>
 	
 	                    <div class="cantidad">
 	                        <span>&#45;</span> 1 <span>&#43;</span>

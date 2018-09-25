@@ -53,7 +53,7 @@ public class LoginController extends HttpServlet {
 					u.setPass(pass);
 					session.setAttribute("usuario", u);
 					session.setMaxInactiveInterval(60); // 1min
-					response.sendRedirect(request.getContextPath() + "/privado/listado.jsp");
+					response.sendRedirect(request.getContextPath() + "/privado/listado");
 				}
 			}else {
 				response.sendRedirect(request.getContextPath() + "/login.jsp?msg=Usuario%20o%20Pass%20Incorrectos");

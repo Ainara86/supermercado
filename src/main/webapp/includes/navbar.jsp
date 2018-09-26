@@ -16,7 +16,7 @@
 	                        </li>
 	
 	                        <li class="nav-item">
-	                            <a class="nav-link" href="privado/listado">Listado</a>
+	                            <a class="nav-link" href="listado">Listado</a>
 	                        </li>
 						</c:if>
                     </ul>

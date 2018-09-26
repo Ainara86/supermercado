@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%@ include file="../includes/header.jsp" %>
+<%@ include file="/includes/header.jsp" %>
 
     <div class="contenedor">
 
-		<%@ include file="../includes/navbar.jsp" %>
+		<%@ include file="/includes/navbar.jsp" %>
 
         <main class="container" role="main">
 	
@@ -22,20 +22,19 @@
                         <th>Imagen (URL)</th>
                     </tr>
                 </thead>
+
                 <tbody>
-                    <c:forEach items="${productos}" var="p">
-                    <tr>
-                        <td>${p.nombre}</td>
-                        <td>${p.precio}</td>
-                        <td>25</td>
-                        <td>${p.descuento}</td>
-                        <td>(${p.precioUnidad})</td>
-                        <td>${p.nombre} ${p.descripcion}</td>
-                        <td><img src="${p.imagen}" alt="imagen-ginebra-beefeater" /></td>
-                    </tr>
-                     </c:forEach>   
-                    
-                        
+                    <c:forEach items="${productos}" var="producto">
+                    	<tr>
+	                        <td>${producto.nombre}</td>
+	                        <td>${producto.precio}</td>
+	                        <td>25</td>
+	                        <td>${producto.descuento}&#37;</td>
+	                        <td>${producto.precioUnidad}</td>
+	                        <td>${producto.descripcion}</td>
+	                        <td><img src="${producto.imagen}" alt="imagen_del_producto" /></td>
+                    	</tr>
+                    </c:forEach>
                 </tbody>
 
             </table>

@@ -1,12 +1,8 @@
 package com.ipartek.formacion.supermercado.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Locale;
-import java.util.ResourceBundle;
+import java.util.List;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,15 +13,15 @@ import javax.servlet.http.HttpSession;
 import com.ipartek.formacion.supermercado.model.Producto;
 import com.ipartek.formacion.supermercado.model.ProductoArrayListDAO;
 
-
 /**
- * Servlet implementation class AltaController
+ * Servlet implementation class AltaProductoController
  */
-@WebServlet("/privado/alta-producto")
+@WebServlet("/altaProducto")
 public class AltaController extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
 	private static ProductoArrayListDAO dao;
-	private long ultimoID = 5;
+	private long ultimoID = 4;
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -45,7 +41,7 @@ public class AltaController extends HttpServlet {
 			String precioUnidad = request.getParameter("precioUnidad");
 			String descripcion = request.getParameter("descripcion");
 			
-			Producto p = new Producto(ultimoID, nombre, precio, descuento, imagen, precioUnidad, descripcion);
+			Producto p = new Producto(ultimoID, nombre, precio, 20, imagen, precioUnidad, descripcion);
 			
 			dao = ProductoArrayListDAO.getInstance();
 			dao.insert(p);
@@ -58,4 +54,5 @@ public class AltaController extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
+
 }

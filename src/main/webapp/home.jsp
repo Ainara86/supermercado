@@ -1,52 +1,50 @@
-<%@include file="includes/header.jsp" %>
-<%@include file="includes/navbar.jsp" %>
-    
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<%@ include file="includes/header.jsp" %>
+
+    <div class="contenedor">
+
+		<%@ include file="includes/navbar.jsp" %>
+
+		<!-- <h2>Numero de Productos ${numeroProductos}</h2> -->
 
         <div class="contenido">
-        <!--  <h2>Numero de productos ${numeroProductos}</h2>-->
-      	        <c:forEach items="${productos}" var="p">
-	      	        <div class="producto">
-					<c:if test="${p.descuento>0}">
-						<p class="descuento">${p.descuento}&#37;</p>
-						<img src="${p.imagen}" alt="imagen-producto" />
-	
+        	<c:forEach items="${productos}" var="p">
+	        	<div class="producto">
+	        		<c:if test="${p.descuento > 0}">
+	        			<p class="descuento">${p.descuento}&#37;</p>
+	        		</c:if>
+	               
+	                <img src="${p.imagen}" alt="imagen-producto" />
+	    
 	                <div class="texto-producto">
-						
-	                    <p><span class="tachado">${p.precio}&euro;</span><span>${p.calcularDescuento}&euro;</span></p>
+		                <c:if test="${p.descuento > 0}"> <!-- Con descuento -->
+		        			<p>
+		        			<span class="tachado">${p.precio}&euro;</span>
+		        			<span>
+		        				<!-- ${p.calcularDescuento}&euro; -->
+		        				<fmt:formatNumber value="${p.precio-(p.precio * (p.descuento/100))}"  maxFractionDigits="2"/>&euro;
+			        			<!-- <fmt:formatNumber var="preDesc" value="${p.precio-(p.precio * (p.descuento/100))}"  maxFractionDigits="2" />
+			        			${preDesc}&euro; -->
+		        			</span>
+		        			</p>
+		        		</c:if>
+		        		<c:if test="${p.descuento == 0}"> <!-- Sin descuento -->
+		        			<p class="no-descuento">${p.precio}&euro;</p>
+		        		</c:if>
 	                    <p class="precio-litro">(${p.precioUnidad})</p>
-	                    <p>${p.nombre} ${p.descripcion};</p>
-	
+	                    <p>${p.descripcion}</p>
 	                    <div class="cantidad">
-	                        <span>&#45;</span> 1 <span>&#43;</span>
+	                            <span>&#45;</span> 1 <span>&#43;</span>
 	                    </div>
-	
 	                </div>
-					</c:if>
-					<c:if test="${p.descuento==0}">
-						<img src="${p.imagen}" alt="imagen-producto" />
-	    
-	                	<div class="texto-producto">
-	    
-		                    <p class="no-descuento">${p.precio}&euro;</p>
-		                    <p class="precio-litro">(${p.precioUnidad})</p>
-		                    <p>${p.nombre}${p.descripcion};</p>
-		    
-		                    <div class="cantidad">
-		                            <span>&#45;</span> 1 <span>&#43;</span>
-		                    </div>
-	    
-	                	</div>
-	                
-					</c:if>
-	                
-	
-	                <a href="#">AÑADIR AL CARRO</a>
-
-           		 </div> <!-- /.producto -->
-           		 </c:forEach>
-
+	                <a href="#" class="btn btn-outline-electric btn-block">AÃ‘ADIR AL CARRO</a>
+	            </div> <!-- /.producto -->
+        	</c:forEach>
         </div> <!-- /.contenido -->
 
         <a href="#top" class="top">Top</a>
-<%@include file="includes/footer.jsp" %>
        
+     </div> <!-- /.contenedor -->
+     
+<%@ include file="includes/footer.jsp" %>

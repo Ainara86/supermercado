@@ -1,7 +1,6 @@
 package com.ipartek.formacion.supermercado.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,7 +21,7 @@ public class LoginController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doProcess(request, response);
+		doPost(request, response);
 	}
 
 	/**
@@ -30,21 +29,14 @@ public class LoginController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		doProcess(request, response);
-		
-	}
-	
-	
-	private void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
-		
 		HttpSession session = request.getSession();
 		
 		try {
 			
 			String nombre = request.getParameter("correo");
 			String pass = request.getParameter("pass");
-			
 			Usuario u = (Usuario) session.getAttribute("usuario");
+			
 			if("admin@gmail.com".equals(nombre) && "admin1234".equals(pass)) {
 
 				if (u == null) {
@@ -52,8 +44,8 @@ public class LoginController extends HttpServlet {
 					u.setNombre(nombre);
 					u.setPass(pass);
 					session.setAttribute("usuario", u);
-					session.setMaxInactiveInterval(60); // 1min
-					response.sendRedirect(request.getContextPath() + "/privado/listado");
+					session.setMaxInactiveInterval(60);
+					response.sendRedirect("listado");
 				}
 			}else {
 				response.sendRedirect(request.getContextPath() + "/login.jsp?msg=Usuario%20o%20Pass%20Incorrectos");
@@ -62,6 +54,7 @@ public class LoginController extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 	}
 
 }
